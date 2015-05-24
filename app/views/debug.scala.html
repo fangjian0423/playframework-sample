@@ -1,0 +1,9 @@
+@()(implicit lang: Lang)
+@import java.util.Date
+@import play.api.Play.current
+
+<footer>
+    lang = @lang.code
+    user = @current.configuration.getString("enviroment.user")
+    date = @(new Date().format("yyyy-MM-dd HH:mm"))
+</footer>

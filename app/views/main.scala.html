@@ -1,0 +1,48 @@
+@(title: String)(content: Html)(implicit flash: Flash)
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>@title</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.css")">
+    </head>
+    <body>
+        <div class="screenshot">
+            <div class="navbar navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <a class="brand" href="@routes.Application.index()">
+                            Product catalog
+                        </a>
+                        <a href="@routes.Application.list()">
+                                    Product navigation
+                        </a>
+                        <a href="@routes.Products.newProduct()">
+                            <i class="icon-plus icon-white"></i>
+                            New
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+
+                @if(flash.get("success").isDefined) {
+                    <div class="alert alert-success">
+                        @flash.get("success")
+                    </div>
+                }
+
+                @if(flash.get("error").isDefined) {
+                    <div class="alert alert-error">
+                        @flash.get("error")
+                    </div>
+                }
+
+                @content
+                @debug()
+            </div>
+        </div>
+    </body>
+</html>

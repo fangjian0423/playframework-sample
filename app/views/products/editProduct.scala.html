@@ -1,0 +1,23 @@
+@(productForm: Form[Product])(implicit flash: Flash)
+
+@import helper._
+@import helper.twitterBootstrap._
+
+
+@main("Product Form") {
+    <h2>Product Form</h2>
+
+    @helper.form(action=routes.Products.save()) {
+        <fieldset>
+            <legend>
+                New Product
+            </legend>
+            @helper.inputText(productForm("ean"))
+            @helper.inputText(productForm("name"))
+            @helper.textarea(productForm("description"))
+        </fieldset>
+        <p>
+            <input type="submit" class="btn primary" value="submit"/>
+        </p>
+    }
+}
